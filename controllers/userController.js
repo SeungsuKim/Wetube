@@ -9,6 +9,6 @@ export const users = (req, res) =>
 export const userDetail = (req, res) => 
     res.send("User Detail", { pageTitle: "User Detail" });
 export const editProfile = (req, res) => 
-    res.send("Edit Profile", { pageTitle: "Edit Profile" });
+    res.render("editProfile", { pageTitle: "Edit Profile" });
 export const changePassword = (req, res) => 
-    res.send("Change Password", { pageTitle: "Change Password" });
+    res.render("changePassword", { pageTitle: "Change Password" });
