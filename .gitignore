@@ -89,3 +89,5 @@ typings/
 uploads
 
 .eslintrc.js
+
+static
