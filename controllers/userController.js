@@ -1,10 +1,11 @@
 import routes from "../routes";
+import User from "../models/User";
 
 export const getJoin = (req, res) => {
     res.render("Join", { pageTitle: "Join" });
 };
 
-export const postJoin = (req, res) => {
+export const postJoin = async (req, res) => {
     const {
         body: { name, email, password, password2 }
     } = req;
@@ -12,7 +13,15 @@ export const postJoin = (req, res) => {
         res.status(400);
         res.render("Join", { pageTitle: "Join" });
     } else {
-        // TODO: Register User
+        try {
+            const user = await User({
+                name,
+                email
+            });
+            await User.register(user, password);
+        } catch (error) {
+            console.log(error);
+        }
         // TODO: Log user in
         res.redirect(routes.home);
     }
@@ -26,16 +35,16 @@ export const postLogin = (req, res) => {
     res.redirect(routes.home);
 };
 
-export const logout = (req, res) =>  {
+export const logout = (req, res) => {
     // TODO: Process Log Out
     res.redirect(routes.home);
 };
 
-export const users = (req, res) => 
+export const users = (req, res) =>
     res.send("Users", { pageTitle: "Users" });
-export const userDetail = (req, res) => 
+export const userDetail = (req, res) =>
     res.render("userDetail", { pageTitle: "User Detail" });
-export const editProfile = (req, res) => 
+export const editProfile = (req, res) =>
     res.render("editProfile", { pageTitle: "Edit Profile" });
-export const changePassword = (req, res) => 
+export const changePassword = (req, res) =>
     res.render("changePassword", { pageTitle: "Change Password" });
