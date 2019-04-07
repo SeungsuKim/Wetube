@@ -32,10 +32,10 @@ export const getLogin = (req, res) => {
     res.render("login", { pageTitle: "Login" });
 };
 
-export const postLogin = (req, res) => passport.authenticate("local", {
+export const postLogin = passport.authenticate("local", {
     failureRedirect: routes.login,
     successRedirect: routes.home
-})
+});
 
 export const logout = (req, res) => {
     // TODO: Process Log Out
