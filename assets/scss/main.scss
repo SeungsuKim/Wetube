@@ -51,3 +51,7 @@ button,
 input[type="submit"] {
     cursor: pointer;
 }
+
+button.video__comment-delete {
+    background-color: $red;
+}
